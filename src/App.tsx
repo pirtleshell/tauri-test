@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useForm } from 'react-hook-form';
+import { invoke, promisified } from 'tauri/api/tauri';
 
 type State = {
   person: string;
@@ -18,6 +19,19 @@ function App() {
   const { handleSubmit, register, errors } = useForm({
     defaultValues: { person: '' },
   });
+
+  React.useEffect(() => {
+    promisified({
+      cmd: 'doSomething',
+      count: 6,
+      payload: {
+        state: '1',
+        data: 10,
+      },
+    }).then((d) => {
+      console.log(d);
+    });
+  }, []);
 
   const go = (data: { person: string }): void => {
     dispatch({ person: data.person });
