@@ -10,6 +10,8 @@ edition = "2018"
 build = "src/build.rs"
 
 [dependencies]
+gedcom = { path = "../../gedcom" }
+gedcom_json = { path = "../../gedcom_json" }
 serde_json = "1.0"
 serde = { version = "1.0", features = [ "derive" ] }
 tauri = { version = "0.11", features = [ ] }

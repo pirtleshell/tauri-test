@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useForm } from 'react-hook-form';
-import { invoke, promisified } from 'tauri/api/tauri';
+import { promisified } from 'tauri/api/tauri';
 
 type State = {
   person: string;
@@ -21,6 +21,7 @@ function App() {
   });
 
   React.useEffect(() => {
+    console.log({ logo });
     promisified({
       cmd: 'doSomething',
       count: 6,
@@ -40,7 +41,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={`public/${logo}`} className="App-logo" alt="logo" />
 
         <form
           className="flex items-center space-x-4 p-3"

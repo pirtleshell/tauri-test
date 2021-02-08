@@ -39,7 +39,7 @@
       "exceptionDomain": ""
     },
     "allowlist": {
-      "all": true
+      "all": false
     },
     "window": {
       "title": "Magic 🌈🕺",

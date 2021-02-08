@@ -4,11 +4,14 @@
 )]
 
 mod cmd;
+mod genes;
+use gedcom_json::GedcomResponse;
 use serde::Serialize;
 
 #[derive(Serialize)]
 struct Response<'a> {
   value: u64,
+  data: GedcomResponse,
   message: &'a str,
 }
 
@@ -30,9 +33,12 @@ fn main() {
               _webview,
               move || {
                 if count > 5 {
+                  // TODO: allow data to live outside closure with mutex!
+                  let data = GedcomResponse::new(genes::init());
                   let response = Response {
                     value: 5,
-                    message: "async response!",
+                    data,
+                    message: "HEY! I'M FROM THE RUST BACKEND!!",
                   };
                   println!("yoooo {:?}", payload);
                   Ok(response)
