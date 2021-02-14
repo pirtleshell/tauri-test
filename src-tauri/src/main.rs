@@ -5,13 +5,13 @@
 
 mod cmd;
 mod genes;
-use gedcom_json::GedcomResponse;
+use gedcom::GedcomData;
 use serde::Serialize;
 
 #[derive(Serialize)]
 struct Response<'a> {
   value: u64,
-  data: GedcomResponse,
+  data: GedcomData,
   message: &'a str,
 }
 
@@ -34,7 +34,7 @@ fn main() {
               move || {
                 if count > 5 {
                   // TODO: allow data to live outside closure with mutex!
-                  let data = GedcomResponse::new(genes::init());
+                  let data = genes::init();
                   let response = Response {
                     value: 5,
                     data,

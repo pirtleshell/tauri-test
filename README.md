@@ -6,5 +6,4 @@ Maybe it's possible something could come of it! But don't count on it.
 * TailwindCss
 * react-hook-form
 * [gedcom parsing](https://github.com/pirtleshell/rust-gedcom)
-* [serde JSON magic](https://github.com/pirtleshell/gedcom_json)
 * TAURI! :fireworks: :cool:
